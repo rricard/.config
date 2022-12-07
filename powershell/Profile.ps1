@@ -13,7 +13,6 @@ foreach ($aliasFile in $aliasFiles) {
   foreach ($alias in $aliases) {
     $fn_name = "AliasFunction$($alias.name)"
     $invoke = "function $fn_name(`$0) { $($alias.command) `$0 }"
-    echo "$invoke"
     Invoke-Expression "$invoke"
     Set-Alias -Name $alias.name -Value $fn_name
   }
