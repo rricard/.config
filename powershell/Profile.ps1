@@ -7,22 +7,22 @@ if ($poshGitModule) {
 }
 
 # 2. Load env config data
-#   a. Set env vars
-$setEnvFiles = Get-ChildItem $env:XDG_CONFIG_HOME/env/set-*.csv
-foreach ($setEnvFile in $setEnvFiles) {
-	$setEnvs = Import-Csv $setEnvFile -Header "name","value"
-	foreach ($setEnv in $setEnvs) {
-		Set-Item -Path "env:$($setEnv.name)" -Value $setEnv.value
-	}
-}
-#   b. Append env vars
-$appendEnvFiles = Get-ChildItem $env:XDG_CONFIG_HOME/env/append-*.csv
-foreach ($appendEnvFile in $appendEnvFiles) {
-	$appendEnvs = Import-Csv $appendEnvFile -Header "name","value"
-	foreach ($appendEnv in $appendEnvs) {
-		$envPath = "env:$($appendEnv.name)"
-		$cur = Get-Item -Path $envPath -ErrorAction SilentlyContinue
-		Set-Item -Path $envPath -Value "$($cur.value);$($appendEnv.value)"
+$envFiles = Get-ChildItem $env:XDG_CONFIG_HOME/env/*.csv
+foreach ($envFile in $envFiles) {
+	$envSetters = Import-Csv $envFile -Header "action","name","value"
+	foreach ($envSetter in $envSetters) {
+		$envPath = "env:$($envSetter.name)"
+		$setValue = Invoke-Expression "`"$($envSetter.value)`""
+		$cur = (Get-Item -Path $envPath -ErrorAction SilentlyContinue).value
+		if ( $envSetter.action -eq "set" ) {
+			Set-Item -Path $envPath -Value $envSetter.value
+		} elseif ( $envSetter.action -eq "append" ) {
+			Set-Item -Path $envPath -Value "$cur;$setValue"
+		} elseif ( $envSetter.action -eq "prepend" ) {
+			Set-Item -Path $envPath -Value "$setValue;$cur"
+		} else {
+			throw "Unknown env action: $($envSetter.action)"
+		}
 	}
 }
 

@@ -1,0 +1,5 @@
+set,EDITOR,nvim
+append,PATH,$XDG_CONFIG_HOME/bin
+append,PATH,$env:XDG_CONFIG_HOME\bin
+append,PATH,$HOME/.bin
+append,PATH,$env:XDG_CONFIG_HOME\..\.bin
