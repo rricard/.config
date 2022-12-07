@@ -26,3 +26,6 @@ set ff=unix
 set incsearch " search as you type
 set hlsearch
 nnoremap <leader><space> :nohlsearch<CR>
+
+" Language: OCaml
+set rtp^=$HOME/.opam/default/share/ocp-indent/vim"

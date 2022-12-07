@@ -25,3 +25,9 @@ while IFS=',' read -r name command
 do
 	alias "$name"="$command"
 done < $XDG_CONFIG_HOME/_aliases/*.csv
+
+# 4. Load up development platforms
+#   a. Load the default opam switch if an OCaml environment is detected
+if which opam > /dev/null; then
+	eval $(opam env --switch=default)
+fi
