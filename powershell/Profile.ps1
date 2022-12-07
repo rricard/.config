@@ -7,7 +7,7 @@ if ($poshGitModule) {
 }
 
 # 2. Load env config data
-$envFiles = Get-ChildItem $env:XDG_CONFIG_HOME/env/*.csv
+$envFiles = Get-ChildItem $env:XDG_CONFIG_HOME/_env/*.csv
 foreach ($envFile in $envFiles) {
 	$envSetters = Import-Csv $envFile -Header "action","name","value"
 	foreach ($envSetter in $envSetters) {
@@ -27,7 +27,7 @@ foreach ($envFile in $envFiles) {
 }
 
 # 3. Load alias config data
-$aliasFiles = Get-ChildItem $env:XDG_CONFIG_HOME/aliases/*.csv
+$aliasFiles = Get-ChildItem $env:XDG_CONFIG_HOME/_aliases/*.csv
 foreach ($aliasFile in $aliasFiles) {
 	$aliases = Import-Csv $aliasFile -Header "name","command"
 	foreach ($alias in $aliases) {

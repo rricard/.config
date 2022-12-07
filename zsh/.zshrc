@@ -18,10 +18,10 @@ do
 	else
 		echo "Unknown env action: $action"
 	fi
-done < $XDG_CONFIG_HOME/env/*.csv
+done < $XDG_CONFIG_HOME/_env/*.csv
 
 # 3. Load alias config data
 while IFS=',' read -r name command
 do
 	alias "$name"="$command"
-done < $XDG_CONFIG_HOME/aliases/*.csv
+done < $XDG_CONFIG_HOME/_aliases/*.csv
