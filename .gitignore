@@ -1,5 +1,6 @@
 # Do not sync the following files:
 *nosync*
+.zcompdump
 
 # Do not sync the following program configs:
 scoop/
