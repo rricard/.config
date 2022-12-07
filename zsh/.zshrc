@@ -7,19 +7,21 @@ prompt pure
 source "$XDG_CONFIG_HOME/zsh/vendored/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # 2. Load env config data
-#   a. Set env vars
-while IFS=',' read -r name value
+while IFS=',' read -r action name value
 do
-  export $name="$value"
-done < $XDG_CONFIG_HOME/env/set-*.csv
-#   b. Append env vars
-while IFS=',' read -r name value
-do
-  eval "export $name=\"\$$name:$value\""
-done < $XDG_CONFIG_HOME/env/append-*.csv
+	if [ "$action" = "set" ]; then
+		export $name="$value"
+	elif [ "$action" = "append" ]; then
+		eval "export $name=\"\$$name:$value\""
+	elif [ "$action" = "prepend" ]; then
+		eval "export $name=\"$value:\$$name\""
+	else
+		echo "Unknown env action: $action"
+	fi
+done < $XDG_CONFIG_HOME/env/*.csv
 
 # 3. Load alias config data
 while IFS=',' read -r name command
 do
-  alias "$name"="$command"
+	alias "$name"="$command"
 done < $XDG_CONFIG_HOME/aliases/*.csv
