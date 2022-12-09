@@ -3,6 +3,20 @@
 # https://github.com/sindresorhus/pure
 # MIT License
 
+# Vendored file audited by Robin Ricard:
+# - No networking
+#   - There is code to detect a shell connected via ssh, however, it does not establish ssh connections itself
+# - No non-git filesystem exploration
+# - Git is used but only with the following necessary commands:
+#   - git config --get-regexp "^alias\."
+#   - git config --get status.showUntrackedFiles
+#   - git diff --no-ext-diff --quiet --exit-code
+#   - git status --porcelain -u???
+#   - git symbolic-ref -q HEAD
+#   - git for-each-ref --format='%(upstream:remotename) %(refname)' ???
+#   - git -c gc.auto=0 fetch --quiet --no-tags --recurse-submodules=no
+#   - git rev-list --left-right --count HEAD...@'{u}'
+
 # For my own and others sanity
 # git:
 # %b => current branch
