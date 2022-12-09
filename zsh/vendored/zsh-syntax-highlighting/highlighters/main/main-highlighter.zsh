@@ -27,6 +27,9 @@
 # vim: ft=zsh sw=2 ts=2 et
 # -------------------------------------------------------------------------------------------------
 
+# Vendored file audited by Robin Ricard:
+# - No networking
+# - Filesystem exploration but driven by user input in the commandline: this is to check validity of paths
 
 # Define default styles.
 : ${ZSH_HIGHLIGHT_STYLES[default]:=none}

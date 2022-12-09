@@ -27,6 +27,7 @@
 # vim: ft=zsh sw=2 ts=2 et
 # -------------------------------------------------------------------------------------------------
 
+# Vendored file audited by Robin Ricard: highlighter code, no external effects
 
 # Define default styles.
 : ${ZSH_HIGHLIGHT_STYLES[cursor]:=standout}

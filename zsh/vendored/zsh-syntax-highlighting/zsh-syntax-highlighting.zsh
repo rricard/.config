@@ -27,6 +27,10 @@
 # vim: ft=zsh sw=2 ts=2 et
 # -------------------------------------------------------------------------------------------------
 
+# Vendored file audited by Robin Ricard:
+# - No networking
+# - No filesystem exploration
+
 # First of all, ensure predictable parsing.
 typeset zsh_highlight__aliases="$(builtin alias -Lm '[^+]*')"
 # In zsh <= 5.2, aliases that begin with a plus sign ('alias -- +foo=42')
