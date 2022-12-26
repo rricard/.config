@@ -28,4 +28,5 @@ set hlsearch
 nnoremap <leader><space> :nohlsearch<CR>
 
 " Language: OCaml
+autocmd FileType ocaml setlocal shiftwidth=2 softtabstop=2 expandtab
 set rtp^=$HOME/.opam/default/share/ocp-indent/vim"
