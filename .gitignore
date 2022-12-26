@@ -1,7 +1,9 @@
 # Do not sync the following files:
 *nosync*
 .zcompdump
+.zsh_history
 
 # Do not sync the following program configs:
 scoop/
 htop/
+iterm2/AppSupport
