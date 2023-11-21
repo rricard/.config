@@ -31,7 +31,11 @@ done < $XDG_CONFIG_HOME/_aliases/*.csv
 cdpath=(~/faves)
 
 # 4. Load up development platforms
-#   a. Load the default opam switch if an OCaml environment is detected
+#   a. load homebrew on arm64 macs
+if ls /opt/homebrew/bin; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+#   b. Load the default opam switch if an OCaml environment is detected
 if which opam > /dev/null; then
 	eval $(opam env --switch=default)
 fi
