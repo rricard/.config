@@ -35,7 +35,3 @@ cdpath=(~/faves)
 if [ -d /opt/homebrew/bin ]; then
 	eval "$(/opt/homebrew/bin/brew shellenv)" 
 fi
-#   b. Load the default opam switch if an OCaml environment is detected
-if which opam > /dev/null; then
-	eval $(opam env --switch=default)
-fi
