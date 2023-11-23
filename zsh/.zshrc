@@ -37,5 +37,5 @@ if [ -d /opt/homebrew/bin ]; then
 fi
 #   b. Load the default opam switch if an OCaml environment is detected
 if which opam > /dev/null; then
-	eval $(opam env --switch=default)
+	eval $(opam env)
 fi
