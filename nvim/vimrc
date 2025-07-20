@@ -10,10 +10,10 @@ set listchars=tab:>·,space:·
 set list
 
 " Edition
-set tabstop=4
+set tabstop=2
 set shiftwidth=0 " defaults to tabstop
 set softtabstop=4
-" set expandtab " tab = spaces
+set expandtab " tab = spaces
 filetype indent on
 
 " Key bindings
