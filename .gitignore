@@ -4,6 +4,9 @@
 .zsh_history
 
 # Do not sync the following program configs:
+opencode/
 scoop/
 htop/
+raycast/
 iterm2/AppSupport
+zed/
