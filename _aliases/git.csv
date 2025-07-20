@@ -2,5 +2,6 @@ g?,git status -sb
 g+,git add --all
 g-,git rm
 g!,git commit -a -m
+gc,git commit -a -m
 g%,git pull;git push
 gs,git checkout

@@ -22,11 +22,15 @@ let mapleader=","
 " File saving options
 set ff=unix
 
-" Search
+" File Search
 set incsearch " search as you type
 set hlsearch
 nnoremap <leader><space> :nohlsearch<CR>
 
+" Shell exec
+set shellcmdflag=-ic
+
 " Language: OCaml
-autocmd FileType ocaml setlocal shiftwidth=2 softtabstop=2 expandtab
-set rtp^=$HOME/.opam/default/share/ocp-indent/vim"
+let g:opamshare = substitute(system('opam var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+
