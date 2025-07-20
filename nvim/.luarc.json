@@ -1,0 +1,15 @@
+{
+  "diagnostics.globals": [
+    "vim",
+    "before_each",
+    "after_each",
+    "describe",
+    "it",
+    "assert"
+  ],
+  "runtime.version": "LuaJIT",
+  "runtime.path": [
+    "lua/?.lua",
+    "lua/?/init.lua"
+  ]
+}
