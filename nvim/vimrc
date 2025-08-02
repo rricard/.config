@@ -1,6 +1,6 @@
 " Looks
 syntax enable
-set number
+set number relativenumber
 set showcmd " keeps last command entered
 " set cursorline
 set wildmenu " autocomplete in command menu
@@ -22,7 +22,7 @@ let mapleader=","
 " File saving options
 set ff=unix
 
-" File Search
+" In-file Search
 set incsearch " search as you type
 set hlsearch
 nnoremap <leader><space> :nohlsearch<CR>
@@ -30,7 +30,12 @@ nnoremap <leader><space> :nohlsearch<CR>
 " Shell exec
 set shellcmdflag=-ic
 
-" Language: OCaml
+" OCaml Merlin (non-LSP Server)
 let g:opamshare = substitute(system('opam var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
+
+" FZF
+" linux fzf already on the rtp
+set rtp+=/opt/homebrew/opt/fzf " macOS
+set rtp+=~/.config/nvim/vendor/fzf.vim-3725f364ccd25b85a91970720ba9bc2931861910
 
