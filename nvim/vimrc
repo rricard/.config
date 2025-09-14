@@ -2,7 +2,7 @@
 syntax enable
 set number relativenumber
 set showcmd " keeps last command entered
-" set cursorline
+set cursorline
 set wildmenu " autocomplete in command menu
 set lazyredraw
 set showmatch
@@ -29,10 +29,6 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 " Shell exec
 set shellcmdflag=-ic
-
-" OCaml Merlin (non-LSP Server)
-let g:opamshare = substitute(system('opam var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 " FZF
 " linux fzf already on the rtp

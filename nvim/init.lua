@@ -3,5 +3,5 @@ vim.cmd('source ~/.config/nvim/vimrc')
 
 -- LSPs
 vim.lsp.enable('luals')
-vim.lsp.enable('json')
+vim.lsp.enable('ocamllsp')
 
