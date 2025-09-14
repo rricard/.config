@@ -5,7 +5,7 @@ vim.cmd('source ~/.config/nvim/vimrc')
 vim.lsp.enable('luals')
 vim.lsp.enable('ocamllsp')
 
--- Autoformat
+-- Autoformat on save
 vim.api.nvim_create_augroup('AutoFormatting', {})
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*.lua',
@@ -16,14 +16,15 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 
 local opam_bin = vim.fn.trim(vim.fn.system('opam var bin'))
-local ocamllformat_bin = opam_bin .. "/ocamlformat"
+local ocamlformat_bin = opam_bin .. "/ocamlformat"
 vim.api.nvim_create_autocmd(
   "BufWritePost",
   {
-    pattern = "*.ml,*.mli,dune",
+    -- Special case for OCaml files (ocammllsp doesn't format)
+    pattern = "*.ml,*.mli",
     group = "AutoFormatting",
     callback = function()
-      vim.cmd(" silent !" .. ocamllformat_bin .. " -i %")
+      vim.cmd(" silent !" .. ocamlformat_bin .. " -i %")
       vim.cmd("edit")
     end,
   }
