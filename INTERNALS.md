@@ -20,7 +20,8 @@ Files with `nosync` anywhere in their name are gitignored and meant for local-on
 ### Editor config (`vim/` & `nvim/`)
 
 - `vim/.vimrc` — classic Vimscript config, loaded first (works in plain vim too)
-- `vim/vendor/fzf.vim-*/` — vendored fzf.vim plugin
+- `vim/vendor/fzf.vim/` — vendored fzf.vim plugin (pinned revision in `vim/vendor/versions.txt`)
+- `vim/vendor/update.sh` — re-vendors all plugins at their latest HEAD; run with `sh vim/vendor/update.sh` then commit the result
 - `nvim/init.lua` — entry point: sources `vimrc`, then loads `nvim/lua/lsp.lua` and `lua/autoformat.lua`
 - `nvim/lua/lsp.lua` — enables LSP servers (luals, ocamllsp) via `vim.lsp.enable()`
 - `nvim/lua/autoformat.lua` — auto-formats on save: LSP format for Lua, `ocamlformat` (via opam) for OCaml
