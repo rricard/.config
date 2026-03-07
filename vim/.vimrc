@@ -21,6 +21,7 @@ let mapleader=","
 
 " File saving options
 set ff=unix
+" Auto-reload files changed outside vim (when buffer is unmodified)
 set autoread
 autocmd FocusGained,BufEnter * checktime
 
