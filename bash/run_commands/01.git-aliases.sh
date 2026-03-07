@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 alias 'g?'='git status -sb'
 alias 'g+'='git add --all'
 alias 'g-'='git rm'

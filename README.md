@@ -7,19 +7,15 @@ I wouldn't recommend using it just like that: read it, understand it and then st
 ## Prereqs
 
 - Install Git & Neovim otherwise you will end up in a broken state
-- Install zsh and chsh to it on Linux if you want to pick up this config, bash is left untouched
+- Install zsh and chsh for a better experience but bash should work relatively okay
 
 ## Installation
 
 Dependencies are vendored and audited so no need to install them after a checkout.
 
-- Copy [_install/.zshrc] to your home directory, adjust the `XDG_CONFIG_HOME` variable in there if needed
+You need to copy some base config files into your homedir to get started:
 
-## Extension points
+```bash
+cp _install/.* $HOME/
+```
 
-All files containing `nosync` in their names are gitignored so you can reasonably extend things for a local environment without syncing to git.
-
-Notably, you can create new `.sh` files in:
-
-- `_aliases` to add shell aliases
-- `_env` to set environment variables
