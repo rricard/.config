@@ -1,1 +1,1 @@
-source $XDG_CONFIG_HOME/nvim/.vimrc
+source $XDG_CONFIG_HOME/vim/.vimrc

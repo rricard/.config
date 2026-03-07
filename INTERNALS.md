@@ -17,16 +17,16 @@ This is a personal XDG_CONFIG_HOME (`~/.config`) dotfiles repository for Linux/m
 
 Files with `nosync` anywhere in their name are gitignored and meant for local-only customization.
 
-### Neovim config (`nvim/`)
+### Editor config (`vim/` & `nvim/`)
 
-- `vimrc` — classic Vimscript config, loaded first (works in plain vim too)
-- `init.lua` — entry point: sources `vimrc`, then loads `lua/lsp.lua` and `lua/autoformat.lua`
-- `lua/lsp.lua` — enables LSP servers (luals, ocamllsp) via `vim.lsp.enable()`
-- `lua/autoformat.lua` — auto-formats on save: LSP format for Lua, `ocamlformat` (via opam) for OCaml
-- `lsp/` — per-LSP config files loaded automatically by name
-- `vendor/fzf.vim-*/` — vendored fzf.vim plugin
+- `vim/.vimrc` — classic Vimscript config, loaded first (works in plain vim too)
+- `vim/vendor/fzf.vim-*/` — vendored fzf.vim plugin
+- `nvim/init.lua` — entry point: sources `vimrc`, then loads `nvim/lua/lsp.lua` and `lua/autoformat.lua`
+- `nvim/lua/lsp.lua` — enables LSP servers (luals, ocamllsp) via `vim.lsp.enable()`
+- `nvim/lua/autoformat.lua` — auto-formats on save: LSP format for Lua, `ocamlformat` (via opam) for OCaml
+- `nvim/lsp/` — per-LSP config files loaded automatically by name
 
-New LSP servers: add a config file in `nvim/lsp/<servername>.lua` and call `vim.lsp.enable('<servername>')` in `lua/lsp.lua`.
+New LSP servers: add a config file in `nvim/lsp/<servername>.lua` and call `vim.lsp.enable('<servername>')` in `nvim/lua/lsp.lua`.
 
 ### Shell configs (`sh/`, `bash/` & `zsh/`)
 

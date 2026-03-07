@@ -33,7 +33,7 @@ set shellcmdflag=-ic
 " FZF
 " linux fzf already on the rtp
 set rtp+=/opt/homebrew/opt/fzf " macOS
-set rtp+=~/.config/nvim/vendor/fzf.vim-3725f364ccd25b85a91970720ba9bc2931861910
+set rtp+=~/.config/vim/vendor/fzf.vim-3725f364ccd25b85a91970720ba9bc2931861910
 
 " Keybindings
 nmap <C-P> :GFiles<CR>

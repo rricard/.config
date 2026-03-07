@@ -21,13 +21,18 @@ cp _install/.* $HOME/
 
 ## Useful keybindings
 
-Most of those come as defaults from the way the tools were installed.
 
 ### Shell shortcuts
 
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl+R` | Fuzzy search shell history |
-| `Ctrl+T` | Fuzzy search files and insert path at cursor |
-| `Alt+C`  | Fuzzy search directories and cd into selection |
+| Shortcut | Action | Configured in |
+|----------|--------|---------------|
+| `Ctrl+R` | Fuzzy search shell history | _Default_ |
+| `Ctrl+T` | Fuzzy search files and insert path at cursor | _Default_ |
+| `Alt+C`  | Fuzzy search directories and cd into selection | _Default_ |
 
+### Vim/Nvim shortcuts
+
+| Shortcut | Action | Configured in |
+|----------|--------|---------------|
+| `Ctrl+P` | Fuzzy search git files | `vim/.vimrc` |
+| `Ctrl+R` | Fuzzy search files | `vim/.vimrc` |
