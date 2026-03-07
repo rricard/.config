@@ -47,3 +47,13 @@ Installation is made by copying profile files from `_install` to the home direct
 Those files are responsible for setting up `XDG_CONFIG_HOME` and sourcing the respective profiles and rcs.
 
 All dependencies being vendored mean that no other commands are required. No remote dependency can be added here, all the code that can be executed is checked into the repo.
+
+Minimal installed programs assumed:
+- bash
+- vim
+
+Expected installed programs:
+- zsh
+- nvim
+- fzf
+- git
