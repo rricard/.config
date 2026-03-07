@@ -11,6 +11,7 @@ set lazyredraw
 set showmatch
 set listchars=tab:>·,space:·
 set list
+set colorcolumn=80,100,120
 
 " Edition
 set tabstop=2
@@ -44,4 +45,4 @@ set rtp+=~/.config/vim/vendor/fzf.vim
 
 " Keybindings
 nmap <C-P> :FZF<CR>
-nmap <C-R> :RG<CR>
+nmap <C-G> :RG<CR>

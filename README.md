@@ -38,5 +38,5 @@ cp _install/.* $HOME/
 
 | Shortcut | Action | Configured in |
 |----------|--------|---------------|
-| `Ctrl+P` | Fuzzy search git files | `vim/.vimrc` |
-| `Ctrl+R` | Fuzzy search files | `vim/.vimrc` |
+| `Ctrl+P` | Fuzzy find files | `vim/.vimrc` |
+| `Ctrl+G` | Fuzzy grep files | `vim/.vimrc` |
