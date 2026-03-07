@@ -27,8 +27,9 @@ set incsearch " search as you type
 set hlsearch
 nnoremap <leader><space> :nohlsearch<CR>
 
-" Shell exec
-set shellcmdflag=-ic
+" Shell exec - use wrapper to get aliases without interactive exec
+set shell=$XDG_CONFIG_HOME/vim/vim-shell
+set shellcmdflag=-c
 
 " FZF
 " linux fzf already on the rtp
