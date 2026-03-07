@@ -1,5 +1,8 @@
 " Looks
 syntax enable
+set background=light
+colorscheme wildcharm
+highlight Normal ctermbg=NONE guibg=NONE
 set number relativenumber
 set showcmd " keeps last command entered
 set cursorline
