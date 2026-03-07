@@ -21,6 +21,8 @@ let mapleader=","
 
 " File saving options
 set ff=unix
+set autoread
+autocmd FocusGained,BufEnter * checktime
 
 " In-file Search
 set incsearch " search as you type
