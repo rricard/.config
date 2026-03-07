@@ -1,4 +1,8 @@
 #!/usr/bin/env sh
 
-export EDITOR=nvim
+if command -v nvim > /dev/null; then
+  export EDITOR=nvim
+else
+  export EDITOR=vim
+fi
 export PATH="$PATH:$HOME/.local/bin"
