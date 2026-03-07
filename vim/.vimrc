@@ -37,5 +37,5 @@ set rtp+=/opt/homebrew/opt/fzf " macOS
 set rtp+=~/.config/vim/vendor/fzf.vim
 
 " Keybindings
-nmap <C-P> :GFiles<CR>
+nmap <C-P> :FZF<CR>
 nmap <C-R> :RG<CR>
