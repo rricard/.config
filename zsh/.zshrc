@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Load run_commands from the bash config
-for f in $XDG_CONFIG_HOME/bash/run_commands/*.sh; do . $f; done
+. $XDG_CONFIG_HOME/bash/run_commands.sh
 
 # ZSH-specific: Prompt init (vendored)
 fpath+=("$XDG_CONFIG_HOME/zsh/vendored/pure")

@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 shopt -s expand_aliases
-for f in "$XDG_CONFIG_HOME/bash/run_commands/"*.sh; do
-  source "$f"
-done
+. $XDG_CONFIG_HOME/bash/run_commands.sh
 eval "$2"
