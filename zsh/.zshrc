@@ -10,3 +10,8 @@ prompt pure
 
 # ZSH-specific: Syntax highlight init (vendored)
 source "$XDG_CONFIG_HOME/zsh/vendored/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# fzf shell integration
+if command -v fzf > /dev/null; then
+  eval "$(fzf --zsh)"
+fi

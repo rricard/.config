@@ -19,3 +19,15 @@ You need to copy some base config files into your homedir to get started:
 cp _install/.* $HOME/
 ```
 
+## Useful keybindings
+
+Most of those come as defaults from the way the tools were installed.
+
+### Shell shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Ctrl+R` | Fuzzy search shell history |
+| `Ctrl+T` | Fuzzy search files and insert path at cursor |
+| `Alt+C`  | Fuzzy search directories and cd into selection |
+
