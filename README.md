@@ -13,20 +13,13 @@ I wouldn't recommend using it just like that: read it, understand it and then st
 
 Dependencies are vendored and audited so no need to install them after a checkout.
 
-### Windows
-
-- Set `XDG_CONFIG_HOME` to the location of this directory in your User Environment Variables
-- Copy [_install/Microsoft.PowerShell_profile.ps1] to the locations listed in the file
-
-### Linux/macOS
-
 - Copy [_install/.zshrc] to your home directory, adjust the `XDG_CONFIG_HOME` variable in there if needed
 
 ## Extension points
 
-All files containing `nosync` in their names are gitiginored so you can reasonably extend things for a local environment without syncing to git.
+All files containing `nosync` in their names are gitignored so you can reasonably extend things for a local environment without syncing to git.
 
-Notably, you can create new `.csv` files in:
+Notably, you can create new `.sh` files in:
 
-- `_aliases` to setup new command aliases in both ZSH and Powershell
-- `_env` to setup env variables in both ZSH and Powershell
+- `_aliases` to add shell aliases
+- `_env` to set environment variables

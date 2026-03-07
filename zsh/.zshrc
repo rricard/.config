@@ -7,24 +7,10 @@ prompt pure
 source "$XDG_CONFIG_HOME/zsh/vendored/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # 2. Load env config data
-while IFS=',' read -r action name value
-do
-	if [ "$action" = "set" ]; then
-		export $name="$value"
-	elif [ "$action" = "append" ]; then
-		eval "export $name=\"\$$name:$value\""
-	elif [ "$action" = "prepend" ]; then
-		eval "export $name=\"$value:\$$name\""
-	else
-		echo "Unknown env action: $action"
-	fi
-done < $XDG_CONFIG_HOME/_env/*.csv
+for f in $XDG_CONFIG_HOME/_env/*.sh; do source $f; done
 
 # 3. Load alias config data
-while IFS=',' read -r name command
-do
-	alias "$name"="$command"
-done < $XDG_CONFIG_HOME/_aliases/*.csv
+for f in $XDG_CONFIG_HOME/_aliases/*.sh; do source $f; done
 
 # 4. Set up zsh settings
 #   a. cdpath
