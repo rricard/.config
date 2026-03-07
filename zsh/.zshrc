@@ -3,6 +3,9 @@
 # Load run_commands from the bash config
 . $XDG_CONFIG_HOME/bash/run_commands.sh
 
+# Ensure emacs-style line editing (Ctrl+A/E etc.)
+bindkey -e
+
 # ZSH-specific: Prompt init (vendored)
 fpath+=("$XDG_CONFIG_HOME/zsh/vendored/pure")
 autoload -U promptinit; promptinit
