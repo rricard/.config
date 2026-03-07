@@ -6,8 +6,12 @@ I wouldn't recommend using it just like that: read it, understand it and then st
 
 ## Prereqs
 
-- Install Git, Fzf & Neovim otherwise you will end up in a broken state
-- Install zsh and chsh for a better experience but bash should work relatively okay
+In theory, bash and vim are the only requirement for this to be useful.
+
+This config will gracefully improve with:
+- git
+- fzf
+- neovim
 
 ## Installation
 
