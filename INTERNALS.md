@@ -59,6 +59,10 @@ Expected installed programs:
 - fzf
 - git
 
+### Gitignore
+
+The `.gitignore` uses a deny-all-then-allowlist strategy (`/*` at the top). Any new root-level directory must be explicitly added to `.gitignore` with a `!/<dirname>/` entry to be tracked.
+
 ## Testing
 
 Run `make` to execute all tests. Prerequisites (not vendored, must be installed separately as described in the README):
