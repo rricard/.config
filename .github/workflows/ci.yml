@@ -16,4 +16,9 @@ jobs:
           sudo apt-get install -y shellcheck
           pip install cram
 
+      - name: Configure git identity for tests
+        run: |
+          git config --global user.email "ci@example.com"
+          git config --global user.name "CI"
+
       - run: make
