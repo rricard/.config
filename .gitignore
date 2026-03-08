@@ -2,6 +2,7 @@
 /*
 
 # Allow tracked directories
+!/.github/
 !/_install/
 !/_tests/
 !/bin/
