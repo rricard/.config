@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+shopt -s expand_aliases
+. $XDG_CONFIG_HOME/bash/run_commands.sh
+eval "$2"

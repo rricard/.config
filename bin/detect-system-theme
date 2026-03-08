@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# Attempts to detect system theme, defaults to light otherwise
+
+theme=$(defaults read -g AppleInterfaceStyle 2>/dev/null; gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null)
+case "$theme" in
+  *[Dd]ark*) echo "dark" ;;
+  *) echo "light" ;;
+esac

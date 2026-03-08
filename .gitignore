@@ -1,0 +1,30 @@
+# Ignore everything at the root level by default
+/*
+
+# Allow tracked directories
+!/_install/
+!/_tests/
+!/bin/
+!/bash/
+!/nvim/
+!/sh/
+!/tmux/
+!/vim/
+!/zsh/
+
+# Allow tracked root files
+!/AGENTS.md
+!/CLAUDE.md
+!/INTERNALS.md
+!/LICENCE
+!/Makefile
+!/README.md
+
+# Ignore nosync files anywhere
+*nosync*
+
+# Ignore zsh runtime files
+.zcompdump
+.zcompcache
+.zsh_history
+.zsh_sessions

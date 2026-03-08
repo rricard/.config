@@ -1,0 +1,120 @@
+#!/usr/bin/env bash
+# git-project-path — resolve (and set up) a git worktree path for a repo.
+#
+# Usage: git-project-path [-n] [domain/][user/]repo[:branch]
+#
+# Flags:
+#   -n    Dry-run: print the target path without any git operations.
+#
+# Defaults:
+#   domain:  github.com
+#   user:    $USER
+#   branch:  main
+#
+# Environment:
+#   GIT_PROJECT_PATH_BASE_DIR Base directory for all repos (default: $HOME/src)
+#   GIT_PROJECT_PATH_REMOTE   Override clone URL (e.g. for local testing)
+#
+# Repo layout under $GIT_PROJECT_PATH_BASE_DIR/<domain>/<user>/<repo>/:
+#   .bare/     bare clone (the git database)
+#   <branch>/  each worktree lives here
+#
+# Intended to be called from a shell function that does the actual cd:
+#   cdg() { local d; d=$(git-project-path "$@") && cd "$d"; }
+
+set -euo pipefail
+
+# Flags
+dry_run=0
+if [[ "${1:-}" == "-n" ]]; then
+  dry_run=1
+  shift
+fi
+
+if [[ $# -ne 1 ]]; then
+  echo "Usage: git-project-path [-n] [domain/][user/]repo[:branch]" >&2
+  exit 1
+fi
+
+spec="$1"
+
+# Extract branch suffix (repo:branch)
+if [[ "$spec" == *:* ]]; then
+  branch="${spec##*:}"
+  spec="${spec%:*}"
+else
+  branch="main"
+fi
+
+# Split spec into domain / user / repo
+IFS='/' read -ra parts <<< "$spec"
+case ${#parts[@]} in
+  1)
+    domain="github.com"
+    user="$USER"
+    repo="${parts[0]}"
+    ;;
+  2)
+    domain="github.com"
+    user="${parts[0]}"
+    repo="${parts[1]}"
+    ;;
+  3)
+    domain="${parts[0]}"
+    user="${parts[1]}"
+    repo="${parts[2]}"
+    ;;
+  *)
+    echo "git-project-path: too many path components in '$spec'" >&2
+    exit 1
+    ;;
+esac
+
+base="${GIT_PROJECT_PATH_BASE_DIR:-$HOME/src}"
+
+if [[ $dry_run -eq 1 ]]; then
+  echo "$base/$domain/$user/$repo/$branch"
+  exit 0
+fi
+
+# Resolve base to an absolute path for git operations (git -C changes cwd)
+mkdir -p "$base/$domain/$user/$repo"
+repo_abs="$(cd "$base/$domain/$user/$repo" && pwd)"
+bare="$repo_abs/.bare"
+target="$repo_abs/$branch"
+
+# Clone if the bare repo doesn't exist yet
+if [[ ! -d "$bare" ]]; then
+  remote="${GIT_PROJECT_PATH_REMOTE:-https://$domain/$user/$repo}"
+  git clone --bare --quiet "$remote" "$bare"
+  # Restore origin with a fetch refspec so future fetches work
+  # (git clone --bare does not set up remote-tracking refs)
+  git -C "$bare" config remote.origin.url "$remote"
+  git -C "$bare" config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+fi
+
+# Create worktree if needed
+if [[ ! -d "$target" ]]; then
+  # Try with an existing local branch first
+  if ! git -C "$bare" worktree add --quiet "$target" "$branch" 2>/dev/null; then
+    # Branch not local yet — fetch from origin
+    git -C "$bare" fetch --quiet origin
+    if git -C "$bare" show-ref --verify --quiet "refs/remotes/origin/$branch"; then
+      # Branch exists on origin — create tracking worktree
+      git -C "$bare" worktree add --quiet -b "$branch" "$target" "origin/$branch"
+    else
+      # Branch doesn't exist on origin — ask user
+      printf "Branch '%s' not found on origin. Create new local branch? yN " "$branch" >&2
+      read -r answer
+      case "$answer" in
+        y|Y) git -C "$bare" worktree add --quiet -b "$branch" "$target" ;;
+        *)
+          echo "Aborted." >&2
+          exit 1
+          ;;
+      esac
+    fi
+  fi
+fi
+
+echo "$base/$domain/$user/$repo/$branch"

@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# tlay — Editor centric tmux layout
+#
+# Creates the following pane arrangement in the current window:
+#
+#   +----------------------+----------+
+#   |                      |  claude  |
+#   |      $EDITOR         |          |
+#   |                      +----------+
+#   |                      |  shell   | 32 lines
+#   +----------------------+----------+
+#          160 cols          (remain)
+#
+# Usage: tlay
+
+set -euo pipefail
+
+if [ -z "${TMUX:-}" ]; then
+  printf 'tlay: must be run inside a tmux session\n' >&2
+  exit 1
+fi
+
+# Remember the original (left/current) pane and its working directory
+orig_pane=$(tmux display-message -p '#{pane_id}')
+orig_dir=$(tmux display-message -p '#{pane_current_path}')
+
+# Split right: new pane gets claude+shell, orig stays left
+right_pane=$(tmux split-window -h -c "$orig_dir" -P -F '#{pane_id}')
+
+# Resize the left (editor) pane to 160 columns
+tmux resize-pane -t "$orig_pane" -x 160
+
+# In the right pane, split off an 32-line shell at the bottom
+tmux split-window -t "$right_pane" -v -l 32 -c "$orig_dir"
+
+# Start $EDITOR in the left (original) pane
+tmux send-keys -t "$orig_pane" "${EDITOR:-vim} ." Enter
+
+# Launch claude in the right-top pane
+tmux send-keys -t "$right_pane" 'claude' Enter
+
+# Focus the editor
+tmux select-pane -t "$orig_pane"
