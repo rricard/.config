@@ -2,6 +2,8 @@
 syntax enable
 if !empty(globpath(&rtp, 'colors/wildcharm.vim'))
   colorscheme wildcharm
+else
+  colorscheme default
 endif
 highlight Normal ctermbg=NONE guibg=NONE
 set number relativenumber
