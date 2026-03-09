@@ -1,6 +1,8 @@
 " Looks
 syntax enable
-colorscheme wildcharm
+if !empty(globpath(&rtp, 'colors/wildcharm.vim'))
+  colorscheme wildcharm
+endif
 highlight Normal ctermbg=NONE guibg=NONE
 set number relativenumber
 set showcmd " keeps last command entered
