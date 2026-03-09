@@ -9,6 +9,6 @@
 . "$XDG_CONFIG_HOME/bash/agentic/pure-prompt-like.sh"
 
 # fzf shell integration
-if command -v fzf > /dev/null; then
+if fzf --bash > /dev/null 2>&1; then
   eval "$(fzf --bash)"
 fi

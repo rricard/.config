@@ -16,7 +16,7 @@ prompt pure
 source "$XDG_CONFIG_HOME/zsh/vendored/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # fzf shell integration
-if command -v fzf > /dev/null; then
+if fzf --zsh > /dev/null 2>&1; then
   eval "$(fzf --zsh)"
 fi
 
