@@ -70,6 +70,13 @@ Vendored files live in per-app directories:
 - `zsh/vendored/`
 - ...
 
+### Agentic configs (`*/agentic/`)
+
+Some per-app directories contain an `agentic/` subdirectory (e.g. `tmux/agentic/`). These hold
+configs that are reproductions or lightweight adaptations of third-party packages — repackaged
+here to be simpler and to avoid a full vendored dependency. They are AI-generated and maintained,
+and each file should include a comment crediting the upstream source.
+
 ### Gitignore
 
 The `.gitignore` uses a deny-all-then-allowlist strategy (`/*` at the top). Any new root-level directory must be explicitly added to `.gitignore` with a `!/<dirname>/` entry to be tracked.
