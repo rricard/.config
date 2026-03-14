@@ -1,6 +1,6 @@
 " Looks
 syntax enable
-set rtp+=~/.config/vim/vendored/catppuccin-vim
+set rtp+=$XDG_CONFIG_HOME/vim/vendored/catppuccin-vim
 set termguicolors
 let s:theme = system('$XDG_CONFIG_HOME/bin/detect-system-theme')
 if s:theme =~ 'light'
@@ -46,10 +46,13 @@ set shellcmdflag=-c
 " FZF
 " linux fzf already on the rtp
 set rtp+=/opt/homebrew/opt/fzf " macOS
-set rtp+=~/.config/vim/vendored/fzf.vim
+set rtp+=$XDG_CONFIG_HOME/vim/vendored/fzf.vim
 
 " vim-visual-multi
-set rtp+=~/.config/vim/vendored/vim-visual-multi
+set rtp+=$XDG_CONFIG_HOME/vim/vendored/vim-visual-multi
+
+" vim-surround
+set rtp+=$XDG_CONFIG_HOME/vim/vendored/vim-surround
 
 " Keybindings
 nmap <C-P> :FZF<CR>
