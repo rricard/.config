@@ -1,11 +1,13 @@
 " Looks
 syntax enable
-if !empty(globpath(&rtp, 'colors/wildcharm.vim'))
-  colorscheme wildcharm
+set rtp+=~/.config/vim/vendored/catppuccin-vim
+set termguicolors
+let s:theme = system('$XDG_CONFIG_HOME/bin/detect-system-theme')
+if s:theme =~ 'light'
+  colorscheme catppuccin_latte
 else
-  colorscheme default
+  colorscheme catppuccin_frappe
 endif
-highlight Normal ctermbg=NONE guibg=NONE
 set number relativenumber
 set showcmd " keeps last command entered
 set cursorline
