@@ -48,6 +48,9 @@ set shellcmdflag=-c
 set rtp+=/opt/homebrew/opt/fzf " macOS
 set rtp+=~/.config/vim/vendored/fzf.vim
 
+" vim-visual-multi
+set rtp+=~/.config/vim/vendored/vim-visual-multi
+
 " Keybindings
 nmap <C-P> :FZF<CR>
 nmap <C-G> :RG<CR>
