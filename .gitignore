@@ -5,6 +5,7 @@
 !/.github/
 !/_install/
 !/_tests/
+!/_vendoring/
 !/bin/
 !/bash/
 !/nvim/

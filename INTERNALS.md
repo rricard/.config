@@ -20,8 +20,7 @@ Files with `nosync` anywhere in their name are gitignored and meant for local-on
 ### Editor config (`vim/` & `nvim/`)
 
 - `vim/.vimrc` — classic Vimscript config, loaded first (works in plain vim too)
-- `vim/vendor/fzf.vim/` — vendored fzf.vim plugin (pinned revision in `vim/vendor/versions.txt`)
-- `vim/vendor/update.sh` — re-vendors all plugins at their latest HEAD; run with `sh vim/vendor/update.sh` then commit the result
+- `vim/vendored/fzf.vim/` — vendored fzf.vim plugin (pinned via `_vendoring/packages.txt`)
 - `nvim/init.lua` — entry point: sources `vimrc`, then loads `nvim/lua/lsp.lua` and `lua/autoformat.lua`
 - `nvim/lua/lsp.lua` — enables LSP servers (luals, ocamllsp) via `vim.lsp.enable()`
 - `nvim/lua/autoformat.lua` — auto-formats on save: LSP format for Lua, `ocamlformat` (via opam) for OCaml
@@ -41,7 +40,7 @@ New LSP servers: add a config file in `nvim/lsp/<servername>.lua` and call `vim.
   - It loads zsh-specific initialization, mostly from vendored packages
     (e.g. prompt styling & syntax highlighting)
 
-### Installation
+### Installation (`_install/`)
 
 Installation is made by copying profile files from `_install` to the home directory.
 
@@ -58,6 +57,18 @@ Expected installed programs:
 - nvim
 - fzf
 - git
+
+### Vendoring (`_vendoring/`)
+
+All dependencies are vendored (committed into the repo). The central update process lives in `_vendoring/`:
+
+- `_vendoring/packages.txt` — manifest/lockfile: one `<target> <tarball-url>` entry per dependency; URLs use exact commit SHAs to prevent supply-chain attacks via tag mutation
+- `_vendoring/update.sh` — downloads and extracts each entry into its target directory; run with `sh _vendoring/update.sh` then commit the result; also available as `make vendor`
+
+Vendored files live in per-app directories:
+- `vim/vendored/`
+- `zsh/vendored/`
+- ...
 
 ### Gitignore
 

@@ -27,7 +27,6 @@
 # vim: ft=zsh sw=2 ts=2 et
 # -------------------------------------------------------------------------------------------------
 
-# Vendored file audited by Robin Ricard: highlighter code, no external effects
 
 # List of keyword and color pairs.
 typeset -gA ZSH_HIGHLIGHT_REGEXP
@@ -56,7 +55,7 @@ _zsh_highlight_regexp_highlighter_loop()
   local -a match mbegin mend
   while true; do
     [[ "$buf" =~ "$pat" ]] || return;
-    region_highlight+=("$((MBEGIN - 1 + OFFSET)) $((MEND + OFFSET)) $ZSH_HIGHLIGHT_REGEXP[$pat], memo=zsh-syntax-highlighting")
+    region_highlight+=("$((MBEGIN - 1 + OFFSET)) $((MEND + OFFSET)) $ZSH_HIGHLIGHT_REGEXP[$pat]")
     buf="$buf[$(($MEND+1)),-1]"
     OFFSET=$((MEND+OFFSET));
   done

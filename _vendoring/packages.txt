@@ -1,0 +1,3 @@
+vim/vendored/fzf.vim https://github.com/junegunn/fzf.vim/archive/34a564c81f36047f50e593c1656f4580ff75ccca.tar.gz
+zsh/vendored/pure https://github.com/sindresorhus/pure/archive/47c0c881f0e7cfdb5eaccd335f52ad17b897c060.tar.gz
+zsh/vendored/zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting/archive/932e29a0c75411cb618f02995b66c0a4a25699bc.tar.gz

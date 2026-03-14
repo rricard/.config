@@ -1,10 +1,5 @@
 #!/usr/bin/env zsh
 
-# Vendored file audited by Robin Ricard:
-# - No networking
-# - No filesystem exploration
-# - Process manipulation is done but necessary
-
 #
 # zsh-async
 #

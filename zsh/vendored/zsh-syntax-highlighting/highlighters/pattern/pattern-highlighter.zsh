@@ -27,7 +27,6 @@
 # vim: ft=zsh sw=2 ts=2 et
 # -------------------------------------------------------------------------------------------------
 
-# Vendored file audited by Robin Ricard: highlighter code, no external effects
 
 # List of keyword and color pairs.
 typeset -gA ZSH_HIGHLIGHT_PATTERNS
@@ -55,7 +54,7 @@ _zsh_highlight_pattern_highlighter_loop()
   local -a match mbegin mend
   local MATCH; integer MBEGIN MEND
   if [[ "$buf" == (#b)(*)(${~pat})* ]]; then
-    region_highlight+=("$((mbegin[2] - 1)) $mend[2] $ZSH_HIGHLIGHT_PATTERNS[$pat], memo=zsh-syntax-highlighting")
+    region_highlight+=("$((mbegin[2] - 1)) $mend[2] $ZSH_HIGHLIGHT_PATTERNS[$pat]")
     "$0" "$match[1]" "$pat"; return $?
   fi
 }

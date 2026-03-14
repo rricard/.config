@@ -27,7 +27,6 @@
 # vim: ft=zsh sw=2 ts=2 et
 # -------------------------------------------------------------------------------------------------
 
-# Vendored file audited by Robin Ricard: highlighter code, no external effects
 
 # Define default styles.
 : ${ZSH_HIGHLIGHT_STYLES[bracket-error]:=fg=red,bold}
@@ -52,9 +51,8 @@ _zsh_highlight_highlighter_brackets_paint()
   local -A levelpos lastoflevel matching
 
   # Find all brackets and remember which one is matching
-  pos=0
-  for char in ${(s..)BUFFER} ; do
-    (( ++pos ))
+  for (( pos = 1; pos <= buflen; pos++ )) ; do
+    char=$BUFFER[pos]
     case $char in
       ["([{"])
         levelpos[$pos]=$((++level))
